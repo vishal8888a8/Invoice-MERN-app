@@ -6,5 +6,5 @@ export default function App() {
         <div>
             <Dashboard />
         </div>
-    );
+    ); 
 }
