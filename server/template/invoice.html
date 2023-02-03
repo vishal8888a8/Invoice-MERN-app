@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Outfit:wght@300&family=Roboto:wght@300&display=swap"
+            rel="stylesheet"
+        />
+        <title>pdf template</title>
+    </head>
+    <style>
+        * {
+            margin: 0%;
+            font-family: "Outfit";
+            box-sizing: border-box;
+        }
+
+        .invoice {
+            width: 52rem;
+            margin: auto;
+        }
+
+        .head {
+            display: flex;
+            height: 12rem;
+            border: solid 2px lightgray;
+            border-bottom: 0;
+            justify-content: space-between;
+            padding-right: 0.4rem;
+        }
+        .head1 > img {
+            width: 11.9rem;
+            margin: auto;
+        }
+        .head1 {
+            width: 12rem;
+        }
+        .head2 {
+            width: 22rem;
+            align-self: center;
+        }
+        .head3 {
+            width: 13rem;
+            align-self: flex-end;
+            margin-bottom: 0.5rem;
+            font-size: large;
+        }
+        /* metadat */
+        .table1v1 {
+            height: 4rem;
+            width: 100%;
+            border-bottom: 0;
+        }
+
+        /* ********Table******* */
+
+        .table1 {
+            height: 11rem;
+            width: 100%;
+            border-bottom: 0;
+        }
+
+        .table1_data > td {
+            width: 50%;
+            border-bottom: 0;
+        }
+
+        .table1_head {
+            text-align: left;
+        }
+
+        .table1_grid {
+            display: grid;
+            grid-template-columns: auto auto;
+        }
+
+        table {
+            padding: 5%;
+            border-bottom: none;
+            table-layout: fixed;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid rgb(180, 177, 177);
+            border-collapse: collapse;
+        }
+
+        td {
+            word-wrap: break-word;
+            padding: 0.2rem 0.4rem;
+        }
+
+        thead {
+            background-color: rgb(239, 235, 235);
+        }
+
+        .address {
+            padding: 1.2%;
+        }
+
+        .address > p {
+            margin-bottom: 0.35rem;
+        }
+
+        /* table2 */
+
+        .table2 {
+            width: 100%;
+            border-top: 0;
+            border-bottom: 0;
+        }
+
+        .table2_rows > td {
+            padding-bottom: 1.2rem;
+            text-align: right;
+        }
+
+        .desc {
+            width: 14rem;
+            text-align: start !important;
+        }
+
+        .num {
+            width: 2rem;
+            text-align: center !important;
+        }
+
+        /* Grid*********** */
+
+        .sum {
+            height: 20rem;
+        }
+        .container {
+            height: 12rem;
+            display: grid;
+            grid-template-columns: 60% auto;
+        }
+
+        .item1,
+        .item2 {
+            height: 6.5rem;
+        }
+        .item3,
+        .item4 {
+            height: 7rem;
+        }
+
+        .item1,
+        .item3 {
+            padding: 0.3rem 0 0 0.5rem;
+        }
+
+        .item4 {
+            border: solid 2px rgb(180, 177, 177);
+            border-top: none;
+            display: flex;
+            justify-content: center;
+        }
+
+        .item4 > p {
+            align-self: flex-end;
+        }
+
+        .table3 {
+            text-align: right;
+            width: 100%;
+            border-top: none !important;
+            /* border: none !important; */
+        }
+
+        .table3_row > td {
+            border: none !important;
+        }
+
+        .table3_row > td {
+            width: 50%;
+        }
+
+        .sum {
+            border: solid 2px lightgray;
+            border-top: 0;
+        }
+
+        .dsin {
+            color: gray;
+        }
+        #watermark {
+            position: fixed;
+            bottom: 800px;
+            z-index: 10000;
+            width: 150%;
+            font-size: 90px;
+            color: rgb(239, 234, 234);
+            transform: rotate(-45deg);
+            overflow: hidden;
+            opacity: 0.6;
+        }
+    </style>
+    <body>
+        <div id="watermark">Yet to be approved</div>
+        <div class="invoice">
+            <section class="head">
+                <div class="head1">
+                    <img
+                        src="data:image/jpeg;base64,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"
+                    />
+                </div>
+                <div class="head2">
+                    <h2>Depo Solutions Private Limited</h2>
+                    <p>77/1/A, Christopher Road, Topsia,</p>
+                    <p>Kolkata - 700046</p>
+                    <p>West Bengal</p>
+                    <p>GSTIN: 19AAJCD1058P1Z4</p>
+                </div>
+                <div class="head3">
+                    <h1>Proforma Invoice</h1>
+                </div>
+            </section>
+
+            <section class="metaData">
+                <div class="mhead">
+                    <div class="estimate">
+                        <table class="table1v1">
+                            <tr class="table1_data">
+                                <td>
+                                    <div class="table1_grid">
+                                        <p>#</p>
+                                        <p>
+                                            <strong>:DEPO/KOL/PI/000007</strong>
+                                        </p>
+                                        <p>Estimate Date</p>
+                                        <p><strong>:30/01/2023</strong></p>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="table1_grid">
+                                        <p>Place of supply</p>
+                                        <p>
+                                            <strong>:West Bengal (19)</strong>
+                                        </p>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="supply">
+                        <table class="table1">
+                            <thead>
+                                <tr class="table1_head">
+                                    <th>Bill To</th>
+                                    <th>Ship To</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="table1_data">
+                                    <td class="address">
+                                        <p>
+                                            <strong
+                                                >DEPO SOLUTIONS PRIVATE
+                                                LIMITED</strong
+                                            >
+                                        </p>
+                                        <p>
+                                            77/1/A, Christopher Road, Topsia
+                                            Topsia
+                                        </p>
+                                        <p>Topsia</p>
+                                        <p>Kolkata - 700046</p>
+                                        <p>West Bengal</p>
+                                        <p>GSTIN: 19AAJCD1058P1Z4</p>
+                                    </td>
+                                    <td class="address">
+                                        <p>DEPO SOLUTIONS PRIVATE LIMITED</p>
+                                        <p>
+                                            77/1/A, Christopher Road, Topsia
+                                            Topsia
+                                        </p>
+                                        <p>Topsia</p>
+                                        <p>Kolkata - 700046</p>
+                                        <p>West Bengal</p>
+                                        <p>GSTIN: 19AAJCD1058P1Z4</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div></div>
+                </div>
+                <div class="maddress"></div>
+            </section>
+
+            <section class="products">
+                <table class="table2">
+                    <thead>
+                        <tr>
+                            <th rowspan="2" class="num">#</th>
+                            <th rowspan="2" class="desc">Item & Description</th>
+                            <th rowspan="2">HSN/SA</th>
+                            <th rowspan="2">Qty</th>
+                            <th rowspan="2">Rate</th>
+                            <th rowspan="2">Discount</th>
+                            <th colspan="2">CGST</th>
+                            <th colspan="2">SGST</th>
+                            <th rowspan="2">Amount</th>
+                        </tr>
+                        <tr>
+                            <th>%</th>
+                            <th>Amt</th>
+                            <th>%</th>
+                            <th>Amt</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each products}}
+                        <tr class="table2_rows">
+                            <td class="num">{{index}}</td>
+                            <td class="desc">
+                                <p>{{name}}</p>
+                                <p class="dsin">{{dsin}}</p>
+                            </td>
+                            <td>{{hsn}}</td>
+                            <td>{{quantity}} {{unit}}</td>
+                            <td>{{mrp}}</td>
+                            <td>{{discount}}%</td>
+                            <td>{{cpercent}}%</td>
+                            <td>{{cgst}}</td>
+                            <td>{{spercent}}%</td>
+                            <td>{{sgst}}</td>
+                            <td>{{amount}}</td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </section>
+
+            <section class="sum">
+                <div class="container">
+                    <div class="item1">
+                        <p>Total in Words</p>
+                        <p>
+                            <strong><i>{{totalWords}}</i></strong>
+                        </p>
+                    </div>
+                    <div class="item2">
+                        <table class="table3">
+                            <tbody>
+                                <tr class="table3_row">
+                                    <td>Sub Total</td>
+                                    <td>{{subTotal}}</td>
+                                </tr>
+                                <tr class="table3_row">
+                                    <td>CGST (9%)</td>
+                                    <td>{{cgst}}</td>
+                                </tr>
+                                <tr class="table3_row">
+                                    <td>SGST (9%)</td>
+                                    <td>{{sgst}}</td>
+                                </tr>
+                                <tr class="table3_row">
+                                    <td><strong>Total</strong></td>
+                                    <td>₹{{total}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="item3">
+                        <p>Looking forward for your business.</p>
+                    </div>
+                    <div class="item4"><p>Authorized Signature</p></div>
+                </div>
+            </section>
+        </div>
+    </body>
+</html>
