@@ -1,9 +1,10 @@
 const mongoose = require("mongoose");
 const data = require("./data");
+const { MONGOURI } = require("../../config/keys");
 
 mongoose.set("strictQuery", false);
 
-mongoose.connect("mongodb://127.0.0.1:27017/newProduct").then(() => {
+mongoose.connect(MONGOURI).then(() => {
     console.log("Database connected!");
 });
 

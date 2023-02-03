@@ -27,7 +27,7 @@ module.exports.printPdf = async (dataBinding, callback) => {
 
             await convertPdf({ templateHtml, dataBinding, options, callback });
 
-            console.log("Done: invoice.pdf is created!");
+            console.log("Invoice is created!");
         })();
     } catch (err) {
         console.log("ERROR:", err);

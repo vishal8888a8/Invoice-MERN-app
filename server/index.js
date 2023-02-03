@@ -35,6 +35,13 @@ app.post("/api/products", async (req, res) => {
     }
 });
 
-app.listen(8000, () => {
+if (process.env.NODE_ENV == "production") {
+    app.get("/", (req, res) => {
+        app.use(express.static(path.resolve(__dirname, "../client/build")));
+        res.sendFile(path.resolve(__dirname, "../client/build/index.html"));
+    });
+}
+
+app.listen(process.env.PORT || 8000, () => {
     console.log("server started");
 });
